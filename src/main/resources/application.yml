@@ -1,0 +1,31 @@
+SCHEMA_REGISTRY_URL: http://localhost:8081
+KAFKA_BOOTSTRAP_SERVER: localhost:9092
+BOOKING_KAFKA_GROUP_ID: booking.consumer.group
+BOOKING_TOPIC: booking.topic
+
+server:
+  port: 8080
+
+kafka:
+  bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVER}
+  client-id:
+  producer:
+    topic: ${BOOKING_TOPIC}
+
+  consumer:
+    consumer-group: ${BOOKING_KAFKA_GROUP_ID}
+    group-id: ${BOOKING_KAFKA_GROUP_ID}
+    topic: ${BOOKING_TOPIC}
+    offset-auto-reset: earliest
+    max-poll-records: 5
+    max-poll-timeout: 5000
+    max-fetch-size-bytes: 2097164
+
+  auto.register.schemas: false
+  auto:
+    create:
+      topics:
+        enable: true # false
+
+  schema-registry:
+    url: ${SCHEMA_REGISTRY_URL}

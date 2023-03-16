@@ -1,0 +1,34 @@
+{
+  "type": "record",
+  "namespace": "com.test",
+  "name": "Booking",
+  "doc": "Schema for Booking",
+  "fields": [
+        {
+          "name": "bookingNumber",
+          "doc": "The number of the booking",
+          "type": [
+            "null",
+            "string"
+          ],
+          "default": null
+        },
+        {
+          "name": "bookingStatus",
+          "doc": "Refers to the different status",
+          "type": [
+            "null",
+            {
+              "type": "enum",
+              "name": "BookingStatusType",
+              "namespace": "com.test.enums",
+              "symbols": [
+                "CONFIRMED",
+                "CANCELLED"
+              ]
+            }
+          ],
+          "default": null
+        }
+    ]
+}
